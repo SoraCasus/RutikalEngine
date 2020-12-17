@@ -9,6 +9,9 @@
 #pragma once
 
 #include <RutikalEngine.h>
+#include <iostream>
+#include <string>
+#include <sstream>
 
 namespace R3D {
 
@@ -317,7 +320,42 @@ namespace R3D {
 		 */
 		inline R3Dfloat GetY() const { return _y; }
 
+		inline std::string ToString() const {
+			std::stringstream ss;
+			ss << "Vec2{ _x: " << _x << ", _y: " << _y << "}";
+			return ss.str();
+		}
 
+		/**
+		 * Operator overloads and their proper declarations
+		 */
+
+		friend Vec2 operator+(Vec2 left, const Vec2& right);
+		friend Vec2 operator-(Vec2 left, const Vec2& right);
+		friend Vec2 operator*(Vec2 left, const Vec2& right);
+
+		friend Vec2 operator+(Vec2 left, R3Dfloat right);
+		friend Vec2 operator-(Vec2 left, R3Dfloat right);
+		friend Vec2 operator*(Vec2 left, R3Dfloat right);
+
+		bool operator==(const Vec2& other) const;
+		bool operator!=(const Vec2& other) const;
+
+		Vec2& operator+=(const Vec2& other);
+		Vec2& operator+=(R3Dfloat other);
+
+		Vec2& operator-=(const Vec2& other);
+		Vec2& operator-=(R3Dfloat other);
+
+		Vec2& operator*=(const Vec2& other);
+		Vec2& operator*=(R3Dfloat other);
+
+		bool operator<(const Vec2& other) const;
+		bool operator<=(const Vec2& other) const;
+		bool operator>(const Vec2& other) const;
+		bool operator>=(const Vec2& other) const;
+
+		friend std::ostream& operator<<(std::ostream& stream, const Vec2& vec);
 	private:
 
 		union {

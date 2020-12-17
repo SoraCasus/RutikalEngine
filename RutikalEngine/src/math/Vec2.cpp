@@ -229,4 +229,81 @@ namespace R3D {
 		return Add(a, b);
 	}
 
+	Vec2 operator+(Vec2 left, const Vec2& right) {
+		return left.Add(right);
+	}
+	
+	Vec2 operator-(Vec2 left, const Vec2& right) {
+		return left.Sub(right);
+	}
+	
+	Vec2 operator*(Vec2 left, const Vec2& right) {
+		return left.Mul(right);
+	}
+
+	Vec2 operator+(Vec2 left, R3Dfloat right) {
+		return left.Add(right);
+	}
+
+	Vec2 operator-(Vec2 left, R3Dfloat right) {
+		return left.Sub(right);
+	}
+
+	Vec2 operator*(Vec2 left, R3Dfloat right) {
+		return left.Mul(right);
+	}
+
+	bool Vec2::operator==(const Vec2& other) const {
+		return _x == other._x && _y == other._y;
+	}
+
+	bool Vec2::operator!=(const Vec2& other) const {
+		return !(*this == other);
+	}
+
+	Vec2& Vec2::operator+=(const Vec2& other) {
+		return Add(other);
+	}
+
+	Vec2& Vec2::operator+=(R3Dfloat other) {
+		return Add(other);
+	}
+
+	Vec2& Vec2::operator-=(const Vec2& other) {
+		return Sub(other);
+	}
+
+	Vec2& Vec2::operator-=(R3Dfloat other) {
+		return Sub(other);
+	}
+
+	Vec2& Vec2::operator*=(const Vec2& other) {
+		return Mul(other);
+	}
+	
+	Vec2& Vec2::operator*=(R3Dfloat other) {
+		return Mul(other);
+	}
+
+	bool Vec2::operator<(const Vec2& other) const {
+		return LengthSq() < other.LengthSq();
+	}
+
+	bool Vec2::operator<=(const Vec2& other) const {
+		return LengthSq() <= other.LengthSq();
+	}
+	
+	bool Vec2::operator>(const Vec2& other) const {
+		return LengthSq() > other.LengthSq();
+	}
+	
+	bool Vec2::operator>=(const Vec2& other) const {
+		return LengthSq() >= other.LengthSq();
+	}
+
+	std::ostream& operator<<(std::ostream& stream, const Vec2& vec) {
+		stream << vec.ToString();
+		return stream;
+	}
+
 }
