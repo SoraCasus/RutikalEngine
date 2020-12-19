@@ -330,13 +330,13 @@ namespace R3D {
 		 * Operator overloads and their proper declarations
 		 */
 
-		friend Vec2 operator+(Vec2 left, const Vec2& right);
-		friend Vec2 operator-(Vec2 left, const Vec2& right);
-		friend Vec2 operator*(Vec2 left, const Vec2& right);
+		friend R3D_API Vec2 operator+(Vec2 left, const Vec2& right);
+		friend R3D_API Vec2 operator-(Vec2 left, const Vec2& right);
+		friend R3D_API Vec2 operator*(Vec2 left, const Vec2& right);
 
-		friend Vec2 operator+(Vec2 left, R3Dfloat right);
-		friend Vec2 operator-(Vec2 left, R3Dfloat right);
-		friend Vec2 operator*(Vec2 left, R3Dfloat right);
+		friend R3D_API Vec2 operator+(Vec2 left, R3Dfloat right);
+		friend R3D_API Vec2 operator-(Vec2 left, R3Dfloat right);
+		friend R3D_API Vec2 operator*(Vec2 left, R3Dfloat right);
 
 		bool operator==(const Vec2& other) const;
 		bool operator!=(const Vec2& other) const;

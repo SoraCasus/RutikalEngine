@@ -38,6 +38,14 @@ TEST(TestVec2, testInstanceAddVector) {
 
 	ASSERT_EQ(left.GetX(), 3);
 	ASSERT_EQ(left.GetY(), 4);
+
+	left = R3D::Vec2(1, 2);
+	right = R3D::Vec2(2, 2);
+
+	left += right;
+
+	ASSERT_EQ(left.GetX(), 3);
+	ASSERT_EQ(left.GetY(), 4);
 }
 
 TEST(TestVec2, testVecVecAdd) {
@@ -45,6 +53,12 @@ TEST(TestVec2, testVecVecAdd) {
 	R3D::Vec2 right(2, 2);
 
 	R3D::Vec2 res = R3D::Vec2::Add(left, right); 
+
+	ASSERT_EQ(res.GetX(), 3);
+	ASSERT_EQ(res.GetY(), 4);
+
+	res = R3D::Vec2(0, 0);
+	res = left + right;
 
 	ASSERT_EQ(res.GetX(), 3);
 	ASSERT_EQ(res.GetY(), 4);
@@ -58,6 +72,14 @@ TEST(TestVec2, testInstanceAddScalar) {
 
 	ASSERT_EQ(left.GetX(), 2.0F);
 	ASSERT_EQ(left.GetY(), 3.0F);
+
+	left = R3D::Vec2(1, 2);
+	right = 1.0F;
+
+	left += right;
+
+	ASSERT_EQ(left.GetX(), 2.0F);
+	ASSERT_EQ(left.GetY(), 3.0F);
 }
 
 TEST(TestVec2, testVecScalarAdd) {
@@ -68,6 +90,12 @@ TEST(TestVec2, testVecScalarAdd) {
 
 	ASSERT_EQ(res.GetX(), 2.0F);
 	ASSERT_EQ(res.GetY(), 3.0F);
+
+	res = R3D::Vec2(0, 0);
+	res = left + right;
+	
+	ASSERT_EQ(res.GetX(), 2.0F);
+	ASSERT_EQ(res.GetY(), 3.0F);
 }
 
 TEST(TestVec2, testScalarVecAdd) {
@@ -75,6 +103,12 @@ TEST(TestVec2, testScalarVecAdd) {
 	R3D::Vec2 right(1, 2);
 
 	R3D::Vec2 res = R3D::Vec2::Add(left, right);
+
+	ASSERT_EQ(res.GetX(), 2.0F);
+	ASSERT_EQ(res.GetY(), 3.0F);
+
+	res = R3D::Vec2(0, 0);
+	res = left + right;
 
 	ASSERT_EQ(res.GetX(), 2.0F);
 	ASSERT_EQ(res.GetY(), 3.0F);
@@ -333,4 +367,12 @@ TEST(TestVec2, testLerp) {
 	res = R3D::Vec2::Lerp(vecA, vecB, 1.0F);
 	ASSERT_EQ(res.GetX(), 0.0F);
 	ASSERT_EQ(res.GetY(), 1.0F);
+}
+
+TEST(TestVec2, testString) {
+	R3D::Vec2 vec(1, 2);
+
+	std::string str = vec.ToString();
+
+	ASSERT_TRUE(str == "Vec2{ _x: 1, _y: 2}");
 }

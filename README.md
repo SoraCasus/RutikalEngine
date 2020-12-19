@@ -11,7 +11,7 @@ Tasks
 - [x] Multiplication
 - [x] Division
 - [x] Vector Operations
-- [ ] Operator overloads
+- [x] Operator overloads
 - [ ] Transformations
 #### Vec3 Class [   ]
 - [ ] Constructors
