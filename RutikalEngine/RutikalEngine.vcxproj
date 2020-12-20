@@ -84,11 +84,13 @@
   <ItemGroup>
     <ClInclude Include="src\math\MathUtils.h" />
     <ClInclude Include="src\math\Vec2.h" />
+    <ClInclude Include="src\math\Vec3.h" />
     <ClInclude Include="src\platform\Platform.h" />
     <ClInclude Include="src\RutikalEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\math\Vec2.cpp" />
+    <ClCompile Include="src\math\Vec3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

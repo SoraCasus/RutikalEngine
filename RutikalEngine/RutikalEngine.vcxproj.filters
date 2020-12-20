@@ -27,9 +27,15 @@
     <ClInclude Include="src\math\MathUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\math\Vec3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\math\Vec2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\Vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
