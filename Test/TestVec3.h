@@ -1,6 +1,6 @@
 /*********************************************************************
- * @file   TestVec2.h
- * @brief  A unit testing class for the R3D::Vec2 class
+ * @file   TestVec3.h
+ * @brief  A testing class for R3D::Vec3
  * 
  * @author Joshua Mayer
  * @date   December 19 2020
@@ -11,15 +11,13 @@
 #include <gtest/gtest.h>
 
 #include <RutikalEngine.h>
-#include <math/Vec2.h>
+#include <math/Vec3.h>
 
 class TestVec2 : public ::testing::Test {
 protected:
 
-	void SetUp() override {
-	}
+	void SetUp() override {}
 
-	void TearDown() override {
-	}
+	void TearDown() override {}
 
 };

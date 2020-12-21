@@ -14,6 +14,10 @@
 #include <string>
 #include <sstream>
 
+#ifdef R3D_OS_WINDOWS
+#	include <xmmintrin.h>
+#endif
+
 namespace R3D {
 
 	/**
@@ -57,6 +61,9 @@ namespace R3D {
 		 */
 		Vec3(const Vec3& pointA, const Vec3& pointB);
 
+	#ifdef R3D_OS_WINDOWS
+		Vec3(__m128 simd);
+	#endif
 		/**
 		 * Adds the other vector to this instance
 		 *
@@ -279,6 +286,23 @@ namespace R3D {
 		static R3Dfloat Dot(const Vec3& left, const Vec3& right);
 
 		/**
+		 * Calculates the cross product between the two vectors
+		 * 
+		 * @param vec The vector to calculate the cross produce with
+		 * @return The cross product between the vectors
+		 */
+		Vec3 Cross(const Vec3& vec);
+
+		/**
+		 * Calculates the cross product between the two vectors
+		 * 
+		 * @param left The left vector
+		 * @param right The right vector
+		 * @return The cross product between the left and right vectors
+		 */
+		static Vec3 Cross(const Vec3& left, const Vec3& right);
+
+		/**
 		 * Calculates the angle between the two vectors constrained between
 		 * 0 < theta < pi
 		 *
@@ -321,11 +345,39 @@ namespace R3D {
 		 */
 		inline R3Dfloat GetY() const { return _y; }
 
+		/**
+		 * Getter method for the Z component of the vector
+		 * 
+		 * @return The Z component of the vector
+		 */
+		inline R3Dfloat GetZ() const { return _z; }
+
 		inline std::string ToString() const {
 			std::stringstream ss;
 			ss << "Vec3{ _x: " << _x << ", _y: " << _y << ", _z: " << _z << "}";
 			return ss.str();
 		}
+
+	#ifdef R3D_OS_WINDOWS
+		
+		/**
+		 * Loads the elements of the vector into a SIMD primitive
+		 * 
+		 * @return The elements loaded into the SIMD primitive
+		 */
+		inline __m128 GetSimd() const {
+			return _mm_load_ps(&elements[0]);
+		}
+
+		/**
+		 * Loads the values from the SIMD primitive into the elements of the vector
+		 * 
+		 * @param val The SIMD primitive to load from
+		 */
+		inline void LoadSimd(__m128 val) {
+			_mm_store_ps(&elements[0], val);
+		}
+	#endif
 
 		/**
 		 * Operator overloads and their proper declarations
@@ -365,9 +417,10 @@ namespace R3D {
 				R3Dfloat _x;
 				R3Dfloat _y;
 				R3Dfloat _z;
+				R3Dfloat _padding;
 			};
 
-			R3Dfloat elements[3];
+			R3D_ALIGN_16 R3Dfloat elements[4];
 		};
 	};
 

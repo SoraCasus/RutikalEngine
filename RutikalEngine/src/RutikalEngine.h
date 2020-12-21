@@ -10,8 +10,10 @@
 #	else
 #		define R3D_API __declspec(dllimport)
 #	endif
+#	define R3D_ALIGN_16 __declspec(align(16))
 #else
 #	define R3D_API
+#	define R3D_ALIGN_16
 #endif
 
 using R3Dfloat = float;
